@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div id="hitcount">0</div>
+    <script src="Scripts/jquery-1.6.4.js"></script>
+    <script src="Scripts/jquery.signalR-2.2.0.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var connection = $.hubConnection();
+            var hub = connection.createHubProxy("hitCounter");
+            hub.on("onRecordHit", function(hitcount){
+            $('#hitcount').text(hitcount);
+        });
+        connection.start(function () {
+            hub.invoke('recordHit');
+        });
+        })
+    </script>
+</body>
+</html>
