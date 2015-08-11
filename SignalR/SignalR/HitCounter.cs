@@ -17,6 +17,11 @@ namespace SignalR
             Clients.All.JsEventName_onRecordHit(hitCountInteger);
         }
 
-       
+        public override System.Threading.Tasks.Task OnDisconnected(bool stopCalled)
+        {
+            hitCountInteger -= 1;
+            Clients.All.JsEventName_onRecordHit(hitCountInteger);
+            return base.OnDisconnected(stopCalled);
+        }
     }
 }
