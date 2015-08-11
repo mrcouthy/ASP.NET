@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Microsoft.AspNet.SignalR;
+using Microsoft.AspNet.SignalR.Hubs;
 
 namespace SignalR
 {
-    public class HitCounter : Hub
+    [HubName("alternamtiveNameto_HitCounterClass")]
+    public class HitCounterClass : Hub
     {
-        static int hitCount = 0;
-        public void RecordHit()
+        static int hitCountInteger = 0;
+        public void RecordHitServerMethod()
         {
-            hitCount += 1;
-            Clients.All.onRecordHit(hitCount);
+            hitCountInteger += 1;
+            Clients.All.JsEventName_onRecordHit(hitCountInteger);
         }
+
+       
     }
 }
