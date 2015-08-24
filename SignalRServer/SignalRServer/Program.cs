@@ -8,7 +8,7 @@ namespace SignalR.Hosting.Self.Samples
     {
         static void Main(string[] args)
         {
-            const string url = "http://127.0.0.1:8088/";
+            const string url = "http://localhost:8080/";
             using (WebApp.Start(url))
             {
                 Console.WriteLine("Started server on {0}", url);
