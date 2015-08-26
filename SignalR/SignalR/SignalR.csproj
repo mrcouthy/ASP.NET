@@ -92,9 +92,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Chat.html" />
-    <Content Include="Chat.min.html">
-      <DependentUpon>Chat.html</DependentUpon>
-    </Content>
     <Content Include="Default.html" />
     <Content Include="packages.config" />
     <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
