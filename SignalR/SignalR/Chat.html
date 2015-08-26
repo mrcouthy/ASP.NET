@@ -15,6 +15,7 @@
         <input type="text" id="message" />
         <input type="button" id="sendmessage" value="Ok" />
         <input type="hidden" id="displayname" />
+        <input type="hidden" id="groupname" />
         <ul id="discussion"></ul>
     </div>
     <!--Script references. -->
@@ -30,15 +31,17 @@
             // Declare a proxy to reference the hub.
             var chat = $.connection.chatHub;
             // Get the user name and store it to prepend to messages.
+            $('#groupname').val(prompt('Enter your group:', ''));
             $('#displayname').val(prompt('Enter your name:', ''));
+            
             // Set initial focus to message input box.
             $('#message').focus();
             // Start the connection.
             $.connection.hub.start().done(function () {
-                chat.server.addToGroup($('#displayname').val());
+                chat.server.addToGroup($('#groupname').val());
                 $('#sendmessage').click(function () {
                     // Call the Send method on the hub.
-                    chat.server.send($('#displayname').val(), $('#message').val());
+                    chat.server.send($('#groupname').val(), $('#displayname').val(), $('#message').val());
                     // Clear text box and reset focus for next comment.
                     $('#message').val('').focus();
                 });
