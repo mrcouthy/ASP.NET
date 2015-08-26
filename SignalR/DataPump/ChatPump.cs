@@ -17,8 +17,9 @@ namespace DataPump
         }
 
 
-        public void ShowAdminMessage( string name, string message)
+        public void SendMessage(   string message)
         {
+            Clients.All.showAdminMessage("Admin", message);
             // Call the broadcastMessage method to update clients.
             //      Clients.User("Dhiraj").broadcastMessage(name, message);
 
