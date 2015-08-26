@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalR", "SignalR\SignalR.csproj", "{D8035410-D4FD-4DCE-ADD7-00BB3E8292B4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataPump", "DataPump\DataPump.csproj", "{044E6FFB-AF3A-4DA2-8F20-708BCEC9C666}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{D8035410-D4FD-4DCE-ADD7-00BB3E8292B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8035410-D4FD-4DCE-ADD7-00BB3E8292B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D8035410-D4FD-4DCE-ADD7-00BB3E8292B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{044E6FFB-AF3A-4DA2-8F20-708BCEC9C666}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{044E6FFB-AF3A-4DA2-8F20-708BCEC9C666}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{044E6FFB-AF3A-4DA2-8F20-708BCEC9C666}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{044E6FFB-AF3A-4DA2-8F20-708BCEC9C666}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
