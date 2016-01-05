@@ -16,12 +16,27 @@ namespace ProductsApp.Controllers
             new Product { Id = 3, Name = "Hammer", Category = "Hardware", Price = 16.99M } 
         };
 
-        public IEnumerable<Product> GetAllProducts()
+        //public IEnumerable<Product> GetAllProducts()
+        //{
+        //    return products;
+        //}
+
+        public IHttpActionResult GetProduct(int id)
+        {
+            var product = products.FirstOrDefault((p) => p.Id == id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+            return Ok(product);
+        }
+
+        public IEnumerable<Product> GetAllApples()
         {
             return products;
         }
 
-        public IHttpActionResult GetProduct(int id)
+        public IHttpActionResult GetApples(int id)
         {
             var product = products.FirstOrDefault((p) => p.Id == id);
             if (product == null)
