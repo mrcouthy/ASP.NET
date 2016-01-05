@@ -11,6 +11,7 @@ using WebApi2.Models;
 
 namespace BooksAPI.Controllers
 {
+    [RoutePrefix("api/books")]
     public class BooksController : ApiController
     {
         private BooksAPIContext db = new BooksAPIContext();
@@ -24,13 +25,13 @@ namespace BooksAPI.Controllers
                 Genre = x.Genre
             };
 
-        // GET api/Books
+        [Route("")]
         public IQueryable<BookDto> GetBooks()
         {
             return db.Books.Include(b => b.Author).Select(AsBookDto);
         }
 
-        // GET api/Books/5
+        [Route("{id:int}")]
         [ResponseType(typeof(BookDto))]
         public async Task<IHttpActionResult> GetBook(int id)
         {
@@ -45,6 +46,39 @@ namespace BooksAPI.Controllers
 
             return Ok(book);
         }
+
+        [Route("{id:int}/details")]
+        [ResponseType(typeof(BookDetailDto))]
+        public async Task<IHttpActionResult> GetBookDetail(int id)
+        {
+            var book = await (from b in db.Books.Include(b => b.Author)
+                              where b.AuthorId == id
+                              select new BookDetailDto
+                              {
+                                  Title = b.Title,
+                                  Genre = b.Genre,
+                                  PublishDate = b.PublishDate,
+                                  Price = b.Price,
+                                  Description = b.Description,
+                                  Author = b.Author.Name
+                              }).FirstOrDefaultAsync();
+
+            if (book == null)
+            {
+                return NotFound();
+            }
+            return Ok(book);
+        }
+
+        [Route("{genre}")]
+        public IQueryable<BookDto> GetBooksByGenre(string genre)
+        {
+            return db.Books.Include(b => b.Author)
+                .Where(b => b.Genre.Equals(genre, StringComparison.OrdinalIgnoreCase))
+                .Select(AsBookDto);
+        }
+
+       
 
         protected override void Dispose(bool disposing)
         {
